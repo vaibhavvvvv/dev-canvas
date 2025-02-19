@@ -2,7 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Space_Grotesk, Outfit } from 'next/font/google'
 import localFont from 'next/font/local'
-
+import { Analytics } from "@vercel/analytics/react"
+import { portfolioData } from './data/portfolio-data'
 // Import Raleway Dots
 const ralewayDots = localFont({
   src: '../public/fonts/RalewayDots-Regular.ttf',
@@ -29,8 +30,8 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: 'Vaibhav Portfolio',
-  description: 'Software Engineer Portfolio',
+  title: portfolioData.personal.name,
+  description: portfolioData.personal.bio,
 }
 
 export default function RootLayout({
@@ -54,6 +55,7 @@ export default function RootLayout({
         <div className="relative">
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   )
