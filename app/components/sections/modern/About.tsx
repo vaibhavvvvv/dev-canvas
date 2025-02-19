@@ -1,7 +1,6 @@
 'use client'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState } from 'react'
-import Image from 'next/image'
 import { portfolioData } from '@/app/data/portfolio-data'
 import { getTechnologyLogo } from '@/app/utils/technology-logos'
 
@@ -17,7 +16,7 @@ const TechStackItem = ({ tech, index }: { tech: string; index: number }) => (
       <div className="flex flex-col items-center gap-2">
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-md transform scale-110 opacity-0 group-hover:opacity-100 transition-opacity" />
-          <Image
+          <img
             src={getTechnologyLogo(tech)}
             alt={tech}
             width={32}
@@ -103,7 +102,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 blur-xl transition-opacity" />
             <div className="relative h-full p-2 rounded-lg bg-black/40 backdrop-blur-sm border border-white/10 group-hover:border-purple-500/50 transition-all flex items-center justify-center">
-              <Image
+              <img
                 src={`https://github-readme-stats.vercel.app/api/top-langs?username=${username}&show_icons=true&locale=en&layout=compact&theme=dark&text_color=ffffff&title_color=a855f7&hide_border=true&bg_color=00000000`}
                 alt="Most Used Languages"
                 width={350}
@@ -121,7 +120,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 blur-xl transition-opacity" />
             <div className="relative h-full p-2 rounded-lg bg-black/40 backdrop-blur-sm border border-white/10 group-hover:border-purple-500/50 transition-all flex items-center justify-center">
-              <Image
+              <img
                 src={`https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=dark&hide_border=true&ring=a855f7&fire=a855f7&currStreakLabel=a855f7&background=00000000`}
                 alt="GitHub Streak Stats"
                 width={350}
@@ -140,7 +139,7 @@ export default function About() {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 blur-xl transition-opacity" />
           <div className="relative p-3 rounded-lg bg-black/40 backdrop-blur-sm border border-white/10 group-hover:border-purple-500/50 transition-all">
-            <Image
+            <img
               src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=dark&hide_border=true&color=a855f7&line=a855f7&point=a855f7&area=true&hide_title=true&bg_color=00000000`}
               alt="GitHub Contribution Graph"
               width={1000}
