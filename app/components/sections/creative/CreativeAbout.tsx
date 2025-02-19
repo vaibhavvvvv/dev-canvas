@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { portfolioData } from '@/app/data/portfolio-data'
@@ -133,7 +132,7 @@ const CreativeAbout = () => {
               className="w-full p-2 bg-white rounded-lg shadow-lg"
               whileHover={{ y: -5 }}
             >
-              <Image
+              <img
                 src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=light&hide_border=true&title_color=6366f1&text_color=475569&bg_color=ffffff`}
                 alt="Most Used Languages"
                 width={445}
@@ -145,7 +144,7 @@ const CreativeAbout = () => {
               className="w-full p-2 bg-white rounded-lg shadow-lg"
               whileHover={{ y: -5 }}
             >
-              <Image
+              <img
                 src={`https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=light&hide_border=true&ring=6366f1&fire=6366f1&currStreakLabel=6366f1`}
                 alt="GitHub Streak"
                 width={445}
@@ -159,7 +158,7 @@ const CreativeAbout = () => {
             className="w-full p-2 bg-white rounded-lg shadow-lg"
             whileHover={{ y: -5 }}
           >
-            <Image
+            <img
               src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=minimal&hide_border=true&color=6366f1&line=6366f1&point=6366f1&area=true&hide_title=true`}
               alt="GitHub Contributions"
               width={1100}
