@@ -12,6 +12,12 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui'],
+        display: ['var(--font-space-grotesk)', 'system-ui'],
+        outfit: ['var(--font-outfit)', 'system-ui'],
+        'raleway-dots': ['var(--font-raleway-dots)', 'system-ui'],
+      },
     },
   },
   plugins: [],

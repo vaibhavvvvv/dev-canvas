@@ -3,20 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background: #0a0a0a;
 }
 
 body {
-  color: var(--foreground);
+  color: rgb(var(--foreground-rgb));
   background: var(--background);
+  min-height: 100vh;
+  overflow-x: hidden;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -25,3 +20,484 @@ body {
     text-wrap: balance;
   }
 }
+
+.grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(128, 90, 213, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 90, 213, 0.2) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGrid 8s linear infinite;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: float 6s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  left: 15%;
+  background: rgba(147, 51, 234, 0.4);
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 350px;
+  height: 350px;
+  top: 50%;
+  right: 15%;
+  background: rgba(79, 70, 229, 0.4);
+  animation-delay: -2s;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  bottom: 10%;
+  left: 25%;
+  background: rgba(236, 72, 153, 0.4);
+  animation-delay: -4s;
+}
+
+.mesh {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  animation: rotateMesh 12s linear infinite;
+}
+
+.mesh-1 {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(147, 51, 234, 0.5),
+    transparent 70%
+  );
+}
+
+.mesh-2 {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(79, 70, 229, 0.5),
+    transparent 70%
+  );
+  animation-delay: -10s;
+}
+
+@keyframes moveGrid {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@keyframes rotateMesh {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(147, 51, 234, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
+  }
+}
+
+/* Digital Rain Style */
+.digital-rain {
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%,
+    rgba(128, 90, 213, 0.2) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background-size: 1px 8px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  animation: digitalRain 20s linear infinite;
+}
+
+@keyframes digitalRain {
+  0% {
+    background-position: 0 -100vh;
+  }
+  100% {
+    background-position: 0 100vh;
+  }
+}
+
+/* Geometric Pattern Style */
+.geometric {
+  background: 
+    linear-gradient(30deg, rgba(128, 90, 213, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(128, 90, 213, 0.1) 87.5%, rgba(128, 90, 213, 0.1)),
+    linear-gradient(150deg, rgba(128, 90, 213, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(128, 90, 213, 0.1) 87.5%, rgba(128, 90, 213, 0.1)),
+    linear-gradient(30deg, rgba(128, 90, 213, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(128, 90, 213, 0.1) 87.5%, rgba(128, 90, 213, 0.1)),
+    linear-gradient(150deg, rgba(128, 90, 213, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(128, 90, 213, 0.1) 87.5%, rgba(128, 90, 213, 0.1));
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+  animation: moveGeometric 10s linear infinite;
+}
+
+@keyframes moveGeometric {
+  0% {
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+  }
+  100% {
+    background-position: 0 140px, 0 140px, 40px 210px, 40px 210px;
+  }
+}
+
+/* Particle Wave Effect */
+.particle-wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(2px 2px at 40px 60px, #fff, rgba(0,0,0,0)),
+              radial-gradient(2px 2px at 20px 50px, rgba(147,51,234,0.4), rgba(0,0,0,0)),
+              radial-gradient(2px 2px at 30px 100px, rgba(79,70,229,0.4), rgba(0,0,0,0)),
+              radial-gradient(2px 2px at 40px 60px, rgba(236,72,153,0.4), rgba(0,0,0,0));
+  background-size: 100px 100px;
+  animation: particleWave 4s linear infinite;
+}
+
+@keyframes particleWave {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
+
+/* Dark High-Contrast Theme */
+.animated-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(125deg, #0a0a0a 0%, #1a103d 25%, #141e33 50%, #0a0a0a 75%);
+  background-size: 400% 400%;
+  filter: blur(30px);
+  animation: gradientFlow 15s ease infinite;
+  opacity: 0.95;
+}
+
+.animated-grid {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, rgba(147, 51, 234, 0.2) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(147, 51, 234, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: gridPulse 8s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.animated-shapes {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(2px 2px at 40px 60px, rgba(147, 51, 234, 0.5), transparent 50%),
+    radial-gradient(2px 2px at 20px 50px, rgba(139, 92, 246, 0.5), transparent 50%),
+    radial-gradient(2px 2px at 30px 100px, rgba(147, 51, 234, 0.5), transparent 50%),
+    radial-gradient(2px 2px at 40px 60px, rgba(139, 92, 246, 0.5), transparent 50%);
+  background-size: 150px 150px;
+  animation: shapesDrift 15s linear infinite;
+  opacity: 0.7;
+}
+
+.circuit-pattern {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, transparent 96%, rgba(147, 51, 234, 0.4) 96%),
+    linear-gradient(0deg, transparent 96%, rgba(147, 51, 234, 0.4) 96%),
+    radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%);
+  background-size: 25px 25px, 25px 25px, 100% 100%;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
+  animation: circuitPulse 10s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba(124, 58, 237, 0.5) 0%,
+      rgba(236, 72, 153, 0.5) 25%,
+      rgba(59, 130, 246, 0.5) 50%,
+      transparent 70%
+    );
+  filter: blur(30px);
+  mix-blend-mode: screen;
+  animation: glowShift 10s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.plasma {
+  position: absolute;
+  inset: 0;
+  filter: url('#plasma');
+  background: 
+    radial-gradient(circle at 50% 50%, 
+      rgba(124, 58, 237, 0.3),
+      rgba(236, 72, 153, 0.3),
+      rgba(59, 130, 246, 0.3)
+    );
+  animation: plasmaMove 15s ease infinite;
+  opacity: 0.4;
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gridPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes shapesDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes circuitPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes glowShift {
+  0%, 100% {
+    --x: 25%;
+    --y: 25%;
+    filter: hue-rotate(0deg) blur(30px);
+  }
+  33% {
+    --x: 75%;
+    --y: 25%;
+    filter: hue-rotate(120deg) blur(40px);
+  }
+  66% {
+    --x: 50%;
+    --y: 75%;
+    filter: hue-rotate(240deg) blur(30px);
+  }
+}
+
+@keyframes plasmaMove {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    filter: hue-rotate(0deg);
+  }
+  33% {
+    transform: rotate(120deg) scale(1.2);
+    filter: hue-rotate(120deg);
+  }
+  66% {
+    transform: rotate(240deg) scale(1);
+    filter: hue-rotate(240deg);
+  }
+}
+
+/* Subtle scan line effect */
+.scan-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(147, 51, 234, 0.15) 0px,
+    rgba(147, 51, 234, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: scanAnimation 8s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes scanAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(25px);
+  }
+}
+
+/* Modern Neon Background */
+.neon-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+/* Animated Gradient Orbs */
+.neon-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+  animation: floatOrb 20s infinite;
+}
+
+.neon-orb-1 {
+  width: 500px;
+  height: 500px;
+  top: 10%;
+  left: 15%;
+  background: rgba(139, 92, 246, 0.3);
+  animation-delay: -5s;
+}
+
+.neon-orb-2 {
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  right: 15%;
+  background: rgba(236, 72, 153, 0.3);
+  animation-delay: -10s;
+}
+
+.neon-orb-3 {
+  width: 600px;
+  height: 600px;
+  bottom: 10%;
+  left: 25%;
+  background: rgba(59, 130, 246, 0.3);
+  animation-delay: -15s;
+}
+
+/* Animated Grid */
+.neon-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGrid 20s linear infinite;
+  opacity: 0.3;
+}
+
+/* Scanlines Effect */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(139, 92, 246, 0.05) 0.5%,
+    transparent 1%
+  );
+  background-size: 100% 3px;
+  animation: scanlines 10s linear infinite;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Glow Effect */
+.neon-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(139, 92, 246, 0.15) 0%,
+    transparent 60%
+  );
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+/* Noise Texture */
+.noise {
+  position: fixed;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(50px, 50px) scale(1.1);
+  }
+  50% {
+    transform: translate(0, 100px) scale(1);
+  }
+  75% {
+    transform: translate(-50px, 50px) scale(0.9);
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Add this to your layout component */
+.background-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
