@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-// import { portfolioData } from '@/app/data/portfolio-data'
+import { useTemplate } from '../../contexts/TemplateContext'
 import Navbar from '../sections/modern/Navbar'
 import Hero from '../sections/modern/Hero'
 import About from '../sections/modern/About'
@@ -11,6 +11,8 @@ import Experience from '../sections/modern/Experience'
 import Contact from '../sections/modern/Contact'
 
 export default function ModernTemplate() {
+  const { portfolioData } = useTemplate()
+  
   return (
     <>
       <style jsx global>{`
@@ -83,7 +85,7 @@ export default function ModernTemplate() {
         className="text-white"
       >
         <section id="home">
-          <Hero />
+          <Hero data={portfolioData} />
         </section>
         <section id="about">
           <About />
@@ -92,7 +94,7 @@ export default function ModernTemplate() {
           <Experience />
         </section>
         <section id="projects">
-          <Projects />
+          <Projects  />
         </section>
         {/* <Skills /> */}
         <section id="contact">

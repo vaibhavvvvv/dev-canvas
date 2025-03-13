@@ -1,27 +1,40 @@
 'use client'
 
 import { createContext, useContext, useState } from 'react'
-import { portfolioData } from '../data/portfolio-data'
 
-// Define available template IDs from portfolio data
-type Template = typeof portfolioData.settings.availableTemplates[number]['id']
+// Define Template type
+type Template = string
 
 interface TemplateContextType {
   currentTemplate: Template
   setTemplate: (template: Template) => void
+  portfolioData: any // Use a more specific type based on your data structure
 }
 
 const TemplateContext = createContext<TemplateContextType | undefined>(undefined)
 
-export function TemplateProvider({ children }: { children: React.ReactNode }) {
-  const [currentTemplate, setCurrentTemplate] = useState<Template>(portfolioData.settings.defaultTemplate as Template)
+export function TemplateProvider({ 
+  children, 
+  initialData 
+}: { 
+  children: React.ReactNode,
+  initialData: any // Use a more specific type based on your data structure
+}) {
+  // Use the default template from the provided data
+  const [currentTemplate, setCurrentTemplate] = useState<Template>(
+    initialData.settings.defaultTemplate || 'modern'
+  )
 
   const setTemplate = (template: Template) => {
     setCurrentTemplate(template)
   }
 
   return (
-    <TemplateContext.Provider value={{ currentTemplate, setTemplate }}>
+    <TemplateContext.Provider value={{ 
+      currentTemplate, 
+      setTemplate,
+      portfolioData: initialData
+    }}>
       {children}
     </TemplateContext.Provider>
   )

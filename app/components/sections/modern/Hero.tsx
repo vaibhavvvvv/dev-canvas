@@ -3,10 +3,9 @@
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { portfolioData } from '@/app/data/portfolio-data'
 import { getTechnologyLogo } from '@/app/utils/technology-logos'
 
-export default function Hero() {
+export default function Hero({ data }: { data: any }) {
   const containerRef = useRef(null)
   const [isHovered, setIsHovered] = useState(false)
   
@@ -19,8 +18,8 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   
   const socialIcons = [
-    { name: 'github', href: portfolioData.personal.social.github },
-    { name: 'X', href: portfolioData.personal.social.twitter },
+    { name: 'github', href: data.personal.social.github },
+    { name: 'X', href: data.personal.social.twitter },
   ]
 
   // Add keyframes animation dynamically
@@ -105,7 +104,7 @@ export default function Hero() {
                   transition: { duration: 0.3 }
                 }}
               >
-                {portfolioData.personal.name}
+                {data.personal.name}
               </motion.span>
             </motion.h1>
             
@@ -115,7 +114,7 @@ export default function Hero() {
               transition={{ delay: 0.2 }}
               className="text-2xl md:text-3xl text-gray-300 mb-6"
             >
-              {portfolioData.personal.title}
+              {data.personal.title}
             </motion.h2>
 
             <motion.p 
@@ -124,7 +123,7 @@ export default function Hero() {
               transition={{ delay: 0.4 }}
               className="text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-8"
             >
-              {portfolioData.personal.summary}
+              {data.personal.summary}
             </motion.p>
 
             <motion.div 
@@ -240,8 +239,8 @@ export default function Hero() {
               {/* Image Container */}
               <div className="relative w-full aspect-square rounded-full overflow-hidden border-2 border-purple-500/50">
                 <Image
-                  src={portfolioData.personal.images.profile}
-                  alt={portfolioData.personal.name}
+                  src={data.personal.images.profile}
+                  alt={data.personal.name}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 280px, (max-width: 1200px) 400px, 450px"

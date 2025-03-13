@@ -1,18 +1,16 @@
 'use client'
 
-import { TemplateProvider, useTemplate } from './contexts/TemplateContext'
-import ModernTemplate from './components/templates/ModernTemplate'
-import CreativeTemplate from './components/templates/CreativeTemplate'
-import TemplateSwitch from './components/TemplateSwitch'
-import CustomCursor from './components/CustomCursor'
 import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
-import { supabase } from './lib/supabaseClient'
-import LoadingScreen from './components/LoadingScreen'
-import PortfolioForm from './components/PortfolioForm'
+import { supabase } from '../lib/supabaseClient'
+import { TemplateProvider } from '../contexts/TemplateContext'
+import ModernTemplate from '../components/templates/ModernTemplate'
+import CreativeTemplate from '../components/templates/CreativeTemplate'
+import TemplateSwitch from '../components/TemplateSwitch'
+import CustomCursor from '../components/CustomCursor'
+import LoadingScreen from '../components/LoadingScreen'
+import { useTemplate } from '../contexts/TemplateContext'
 
-export default function Home() {
-  const pathname = usePathname()
+export default function PortfolioPage({ params }: { params: { username: string } }) {
   const [portfolioData, setPortfolioData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -20,20 +18,10 @@ export default function Home() {
   useEffect(() => {
     async function fetchPortfolioData() {
       try {
-        // If we're on the root path, we'll show the form instead
-        if (pathname === '/') {
-          setLoading(false)
-          return
-        }
-        
-        // Extract username from the path (e.g., /vaibhav -> vaibhav)
-        const username = pathname.substring(1)
-        
-        // Fetch user data from Supabase
         const { data, error } = await supabase
           .from('portfolios')
-          .select('*')
-          .eq('username', username)
+          .select('portfolio_data')
+          .eq('username', params.username)
           .single()
           
         if (error) throw error
@@ -54,20 +42,12 @@ export default function Home() {
     }
     
     fetchPortfolioData()
-  }, [pathname])
+  }, [params.username])
   
-  // Show form if we're on the root path - check this FIRST
-  if (pathname === '/') {
-    return <PortfolioForm />
-  }
-  
-  // Show loading screen while fetching data
   if (loading) return <LoadingScreen />
   
-  // Show error message if there's an error
   if (error) return <div className="min-h-screen flex items-center justify-center text-red-500">{error}</div>
   
-  // Show portfolio if we have data
   if (portfolioData) {
     return (
       <TemplateProvider initialData={portfolioData}>
@@ -80,7 +60,6 @@ export default function Home() {
     )
   }
   
-  // Fallback
   return <div className="min-h-screen flex items-center justify-center">Portfolio not found</div>
 }
 
@@ -92,4 +71,4 @@ function ClientTemplate() {
       {currentTemplate === 'modern' ? <ModernTemplate /> : <CreativeTemplate />}
     </>
   )
-}
+} 
