@@ -23,9 +23,10 @@ export const portfolioData = {
       location: "Pune, India",
       email: "vaibhavng7@gmail.com",
       phone: "+91 8855910016",
-      summary: "A passionate full-stack developer specializing in Web3, Cloud technologies, and automation solutions.",
-      bio: "I'm a dedicated software engineer with expertise in building decentralized applications, automation tools, and full-stack web solutions. Currently working on innovative projects at Lazarus Network while pursuing my B.E. in Computer Engineering.",
+      summary: "Full Stack Alchemist brewing Web3, AI, Cloud potions with a pinch of automation. Wanna Build x Solve x Simply",
+      bio: "I'm a Full Stack Software Engineer with a passion for Web3, AI, cloud infrastructure, and automation. Whether it's integrating smart contracts, deploying and managing servers, building decentralized apps, or automating workflows with AI agents, I'm always on the hunt for new challenges. My goal? To simplify complexity and create solutions that are more accessible and efficient. \n When I'm not deep in code, you'll probably find me tinkering with new tech, breaking things just to rebuild them better, or enjoying a cup of coffee while brainstorming my next big idea.",
       avatar: "/images/avatar.jpg",
+      resumePath: "/vaibhav-gadhave-resume-6.2.pdf",
       social: {
         github: "https://github.com/vaibhavvvvv",
         twitter: "https://twitter.com/vaibhavng7",
@@ -50,14 +51,33 @@ export const portfolioData = {
         },
         projects: [
           {
+            name: "Erebrus",
+            description: "Decentralized VPN,WIFI Rental System, AI Agents launchpad, SDK",
+            highlights: [
+              "Built a deployment and management system for autonomous AI agents (Eliza) integrated with VPN.",
+              "Integrated Peaq smart contracts in a Go backend for VPN node registration and management on the blockchain. Self-hosted ipfs-nodes to skip reliance on third party providers across muliple projects",
+              "Developed a npm SDK to connect and manage VPNs",
+              "Developed a decentralized WiFi rental system that allows users to rent WiFi access from node operators, with automated payment processing via smart contracts and real-time device connection tracking for transparency and security"
+            ],
+            tech: ["Solidity", "Web3", "AWS", "GCP", "Go", "Eliza"],
+            images: {
+              thumbnail: "/images/projects/erebrus/thumbnail.jpg",
+              screenshots: [
+                "/images/projects/erebrus/dashboard.jpg",
+                "/images/projects/erebrus/payments.jpg",
+                "/images/projects/erebrus/devices.jpg"
+              ]
+            }
+          },
+          {
             name: "Autochase",
             description: "Full-stack Auto Parts aggregator web app",
             highlights: [
-              "Developed automation system using Golang, Chromedp, React, and Electron",
-              "Built admin dashboard for subscription management and analytics",
-              "Implemented email authentication and customizable UI features"
+              "Developed an automotive parts aggregator web app using Golang and ChromeDP to scrape and consolidate product data from multiple websites, aiding sales teams in decision-making.",
+              "Additionally, built a separate admin portal for managing subscriptions and analyzing data. ",
+              "Used Electron to later convert it to a cross-platform desktop application."
             ],
-            tech: ["Golang", "React", "JavaScript", "Ant Design", "Supabase", "Docker", "Electron"],
+            tech: ["Go", "React", "JavaScript", "Ant Design", "Supabase", "Docker", "Electron"],
             images: {
               thumbnail: "/images/projects/autochase/thumbnail.jpg",
               screenshots: [
@@ -70,35 +90,17 @@ export const portfolioData = {
             name: "NetSepio",
             description: "Multi-platform bot development and AI integration",
             highlights: [
-              "Developed bots for Telegram, Discord, and Twitter",
+              "Developed Telegram, Discord, and Twitter bots to leverage backend apis across social media",
               "Integrated Adguard home into organization's ecosystem",
-              "Created AI-powered website data usage summarizer"
+              "Built an AI-powered website summarizer to analyze and report data usage."
             ],
-            tech: ["Golang", "Python", "AI/ML", "Bot Development"],
+            tech: ["Go", "Python", "AI/ML", "Bot Development"],
             images: {
               thumbnail: "/images/projects/netsepio/thumbnail.jpg",
               screenshots: [
                 "/images/projects/netsepio/telegram.jpg",
                 "/images/projects/netsepio/discord.jpg",
                 "/images/projects/netsepio/twitter.jpg"
-              ]
-            }
-          },
-          {
-            name: "Erebrus",
-            description: "Decentralized Wi-Fi Rental System",
-            highlights: [
-              "Developed smart contract integration for automated payments",
-              "Created device connection tracking system",
-              "Managed cloud infrastructure on AWS and GCP"
-            ],
-            tech: ["Solidity", "Web3", "Cloud Services", "API Development"],
-            images: {
-              thumbnail: "/images/projects/erebrus/thumbnail.jpg",
-              screenshots: [
-                "/images/projects/erebrus/dashboard.jpg",
-                "/images/projects/erebrus/payments.jpg",
-                "/images/projects/erebrus/devices.jpg"
               ]
             }
           }
@@ -115,9 +117,8 @@ export const portfolioData = {
             name: "Bitsmith Classrooms",
             description: "Educational platform development",
             highlights: [
-              "Developed new features and UI improvements",
-              "Managed WordPress website content",
-              "Fixed bugs and improved user experience"
+              "As a frontend developer, designed and built Ant Design UI components in a Reactjs CRM dashboard.",
+              "Worked on WordPress to create and manage webpages for websites.",
             ],
             tech: ["JavaScript", "React", "Ant Design", "WordPress", "Git"]
           }

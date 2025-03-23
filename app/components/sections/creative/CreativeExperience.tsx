@@ -266,7 +266,7 @@ export default function CreativeExperience() {
               {/* Experience Card */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className={`w-[90%] md:w-[45%] relative`}
+                className={`w-full md:w-[45%] relative`}
               >
                 <motion.div
                   className="relative rounded-2xl overflow-hidden backdrop-blur-sm p-6"
@@ -276,65 +276,78 @@ export default function CreativeExperience() {
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.05)'
                   }}
                 >
-                  <div className="flex gap-4 items-start">
+                  {/* Header with company info and logo */}
+                  <div className="flex gap-4 items-center mb-4">
                     {/* Company Logo */}
                     {renderCompanyLogo(exp.images?.company_logo, exp.company)}
 
-                    {/* Content */}
-                    <div className="flex-1">
+                    {/* Company Info */}
+                    <div>
                       <h3 className="text-xl font-bold" style={{ color: colors.text.primary }}>
                         {exp.title}
                       </h3>
                       <h4 className="text-lg mb-1" style={{ color: colors.text.secondary }}>
                         {exp.company}
                       </h4>
-                      <p className="text-sm text-gray-500 mb-4">
+                      <p className="text-sm text-gray-500">
                         {exp.period} • {exp.location}
                       </p>
-
-                      {/* Projects */}
-                      {exp.projects && (
-                        <div className="space-y-3">
-                          {exp.projects.map((project, pIndex) => (
-                            <motion.div
-                              key={pIndex}
-                              className="p-3 rounded-xl"
-                              style={{
-                                background: `linear-gradient(135deg, ${colors.primary}08, ${colors.secondary}08)`
-                              }}
-                            >
-                              <h5 className="text-base font-semibold mb-2" style={{ color: colors.text.primary }}>
-                                {project.name}
-                              </h5>
-                              <p className="text-sm mb-2" style={{ color: colors.text.secondary }}>
-                                {project.description}
-                              </p>
-                              
-                              {/* Tech Stack */}
-                              <div className="flex flex-wrap gap-2">
-                                {project.tech?.map((tech, tIndex) => (
-                                  <motion.div
-                                    key={tIndex}
-                                    whileHover={{ scale: 1.05 }}
-                                    className="flex items-center gap-1.5 px-2 py-1 rounded-full"
-                                    style={{
-                                      background: `linear-gradient(135deg, ${colors.primary}10, ${colors.secondary}10)`,
-                                      border: '1px solid rgba(139, 92, 246, 0.1)'
-                                    }}
-                                  >
-                                    {renderTechIcon(tech)}
-                                    <span className="text-xs" style={{ color: colors.text.secondary }}>
-                                      {tech}
-                                    </span>
-                                  </motion.div>
-                                ))}
-                              </div>
-                            </motion.div>
-                          ))}
-                        </div>
-                      )}
                     </div>
                   </div>
+
+                  {exp.projects && (
+                    <div className="space-y-3 w-full">
+                      {exp.projects.map((project, pIndex) => (
+                        <motion.div
+                          key={pIndex}
+                          className="p-3 rounded-xl"
+                          style={{
+                            background: `linear-gradient(135deg, ${colors.primary}08, ${colors.secondary}08)`
+                          }}
+                        >
+                          <h5 className="text-base font-semibold mb-2" style={{ color: colors.text.primary }}>
+                            {project.name}
+                          </h5>
+                          <p className="text-sm mb-2" style={{ color: colors.text.secondary }}>
+                            {project.description}
+                          </p>
+                          
+                          {/* Project Highlights */}
+                          {project.highlights && project.highlights.length > 0 && (
+                            <div className="mb-3">
+                              <ul className="list-disc list-inside space-y-1">
+                                {project.highlights.map((highlight, hIndex) => (
+                                  <li key={hIndex} className="text-sm text-gray-600">
+                                    {highlight}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          
+                          {/* Tech Stack */}
+                          <div className="flex flex-wrap gap-2">
+                            {project.tech?.map((tech, tIndex) => (
+                              <motion.div
+                                key={tIndex}
+                                whileHover={{ scale: 1.05 }}
+                                className="flex items-center gap-1.5 px-2 py-1 rounded-full"
+                                style={{
+                                  background: `linear-gradient(135deg, ${colors.primary}10, ${colors.secondary}10)`,
+                                  border: '1px solid rgba(139, 92, 246, 0.1)'
+                                }}
+                              >
+                                {renderTechIcon(tech)}
+                                <span className="text-xs" style={{ color: colors.text.secondary }}>
+                                  {tech}
+                                </span>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               </motion.div>
             </motion.div>

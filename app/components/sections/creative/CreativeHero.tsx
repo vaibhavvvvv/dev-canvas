@@ -47,6 +47,15 @@ export default function CreativeHero() {
     { icon: <FiTwitter className="w-6 h-6" />, url: portfolioData.personal.social.twitter, label: 'Twitter' },
     { icon: <FiLinkedin className="w-6 h-6" />, url: portfolioData.personal.social.linkedin, label: 'LinkedIn' },
     { icon: <FiMail className="w-6 h-6" />, url: `mailto:${portfolioData.personal.email}`, label: 'Email' },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ), 
+      url: portfolioData.personal.resumePath, 
+      label: 'Resume' 
+    },
   ]
 
   // Add keyframes
@@ -199,6 +208,29 @@ export default function CreativeHero() {
                   {link.icon}
                 </motion.a>
               ))}
+            </motion.div>
+            
+            {/* Resume Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4 }}
+              className="mt-8"
+            >
+              <motion.a
+                href={portfolioData.personal.resumePath}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-orange-400 to-pink-500 
+                  text-white font-medium shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                View Resume
+              </motion.a>
             </motion.div>           
           </motion.div>
         </div>
